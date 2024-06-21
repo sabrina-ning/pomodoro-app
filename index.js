@@ -244,3 +244,23 @@ function resetTimer() {
 function skipCurrent() {
     nextMode();
 }
+
+// SPOTIFY EMBED
+var control = document.getElementById("spotify-control");
+control.addEventListener("click", nextPlaylist);
+var playlist = document.getElementById("spotify");
+var links = ["https://open.spotify.com/embed/playlist/37i9dQZF1DX8wWHvPMMfNA?utm_source=generator&theme=0", // Focus Jazz
+    "https://open.spotify.com/embed/playlist/37i9dQZF1DWYmSg58uBxin?utm_source=generator&theme=0", // Positive Focus
+    "https://open.spotify.com/embed/playlist/37i9dQZF1DWZZbwlv3Vmtr?utm_source=generator&theme=0", // Focus Flow
+    "https://open.spotify.com/embed/playlist/37i9dQZF1DWZIOAPKUdaKS?utm_source=generator&theme=0", // Focus Piano
+    "https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ?utm_source=generator&theme=0" // Deep Focus
+]
+var index = 0
+
+function nextPlaylist() {
+    playlist.src = links[index];
+    index++;
+    if(index == links.length) {
+        index = 0
+    }
+}
