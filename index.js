@@ -2,7 +2,7 @@
 var startPause = document.getElementById("start-pause");
 var skip = document.getElementById("skip");
 var timer = document.getElementById("timer");
-var ringtone = new Audio("./files/ringtone.mp3");
+var ringtone = new Audio("files/ringtone.mp3");
 
 startPause.addEventListener("click", startTimer);
 skip.addEventListener("click", skipCurrent);
@@ -192,9 +192,10 @@ function startTimer() {
             updateTimer();
             if(timeLeft < 0) {
                 if(!isMuted) {
-                    ringtone.play();
+                    console.log("Ringtone should play now");
+                    ringtone.volume = 1; // Set to max volume
+                    ringtone.play().catch(err => console.log("Audio playback error:", err));
                     ringtone.loop = true;
-                    console.log("ringtone");
                 }
                 alert("Time's up!");
                 nextMode();
